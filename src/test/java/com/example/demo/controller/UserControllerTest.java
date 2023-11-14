@@ -109,4 +109,15 @@ public class UserControllerTest {
                 .andExpect(jsonPath("$.address").value("Incheon"))
                 .andExpect(jsonPath("$.status").value("ACTIVE"));
     }
+
+
+    @Test
+    void 사용자는_인증_코드가_일치하지_않을_경우_권한_없음_에러를_내려준다() throws Exception {
+        // given
+        // when
+        // then
+        mockMvc.perform(get("/api/users/2/verify")
+                        .queryParam("certificationCode", "aaaa-aaaaa-aaaaaa22"))
+                .andExpect(status().isForbidden());
+    }
 }
