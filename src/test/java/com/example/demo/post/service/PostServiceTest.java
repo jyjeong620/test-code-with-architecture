@@ -1,5 +1,6 @@
 package com.example.demo.post.service;
 
+import com.example.demo.post.domain.Post;
 import com.example.demo.post.domain.PostCreate;
 import com.example.demo.post.domain.PostUpdate;
 import com.example.demo.post.infrastructure.PostEntity;
@@ -31,7 +32,7 @@ class PostServiceTest {
         // given
 
         // when
-        PostEntity result = postService.getById(1L);
+        Post result = postService.getById(1L);
 
         // then
         assertThat(result.getContent()).isEqualTo("helloworld");
@@ -44,7 +45,7 @@ class PostServiceTest {
                 .writerId(1L)
                 .build();
 
-        PostEntity result = postService.create(postCreate);
+        Post result = postService.create(postCreate);
 
         assertThat(result.getId()).isNotNull();
         assertThat(result.getContent()).isEqualTo("my name is jeongjy");
@@ -59,7 +60,7 @@ class PostServiceTest {
 
         postService.update(1L, postUpdate);
 
-        PostEntity result = postService.getById(1L);
+        Post result = postService.getById(1L);
         assertThat(result.getId()).isNotNull();
         assertThat(result.getContent()).isEqualTo("my name is jeongjy620");
         assertThat(result.getModifiedAt()).isGreaterThan(0L);
