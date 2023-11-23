@@ -12,6 +12,7 @@ import java.util.Optional;
 public class PostRepositoryImpl implements PostRepository {
 
     private final PostJpaRepository postJpaRepository;
+
     @Override
     public Optional<Post> findById(long id) {
         return postJpaRepository.findById(id).map(PostEntity::toModel);

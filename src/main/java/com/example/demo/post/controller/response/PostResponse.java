@@ -4,7 +4,6 @@ import com.example.demo.post.domain.Post;
 import com.example.demo.user.controller.response.UserResponse;
 import lombok.Builder;
 import lombok.Getter;
-import lombok.Setter;
 
 @Getter
 @Builder
