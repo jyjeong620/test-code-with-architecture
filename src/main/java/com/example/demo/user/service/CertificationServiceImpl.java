@@ -1,12 +1,13 @@
 package com.example.demo.user.service;
 
+import com.example.demo.user.controller.port.CertificationService;
 import com.example.demo.user.service.port.MailSender;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class CertificationService {
+public class CertificationServiceImpl implements CertificationService {
 
     private final MailSender mailSender;
 
@@ -19,4 +20,5 @@ public class CertificationService {
     private String generateCertificationUrl(long userId, String certificationCode) {
         return "http://localhost:8080/api/users/" + userId + "/verify?certificationCode=" + certificationCode;
     }
+
 }
