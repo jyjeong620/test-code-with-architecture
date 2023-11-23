@@ -2,7 +2,6 @@ package com.example.demo.user.controller;
 
 import com.example.demo.common.domain.exception.CertificationCodeNotMatchedException;
 import com.example.demo.common.domain.exception.ResourceNotFoundException;
-import com.example.demo.common.service.port.ClockHolder;
 import com.example.demo.mock.TestContainer;
 import com.example.demo.user.controller.response.MyProfileResponse;
 import com.example.demo.user.controller.response.UserResponse;
@@ -32,7 +31,7 @@ public class UserControllerTest {
                 .build());
 
         // when
-        ResponseEntity<UserResponse> result = testContainer.userController.getUserById(1L);
+        ResponseEntity<UserResponse> result = testContainer.userController.getById(1L);
 
         // then
         assertThat(result.getStatusCode()).isEqualTo(HttpStatus.OK);
@@ -50,7 +49,7 @@ public class UserControllerTest {
         TestContainer testContainer = TestContainer.builder().build();
         // when
         // then
-        assertThatThrownBy(() -> testContainer.userController.getUserById(1L))
+        assertThatThrownBy(() -> testContainer.userController.getById(1L))
                 .isInstanceOf(ResourceNotFoundException.class);
     }
 

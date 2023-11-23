@@ -7,13 +7,11 @@ import com.example.demo.user.domain.User;
 import com.example.demo.user.domain.UserStatus;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 public class PostCreateControllerTest {
 
@@ -38,7 +36,7 @@ public class PostCreateControllerTest {
                 .content("helloworld")
                 .build();
         // when
-        ResponseEntity<PostResponse> result = testContainer.postCreateController.createPost(postCreate);
+        ResponseEntity<PostResponse> result = testContainer.postCreateController.create(postCreate);
         // then
         assertThat(result.getStatusCode()).isEqualTo(HttpStatus.CREATED);
         assertThat(result.getBody()).isNotNull();

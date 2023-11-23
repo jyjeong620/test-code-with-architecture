@@ -55,7 +55,7 @@ public class UserEntity {
     }
 
 
-    public static UserEntity fromModel(User user) {
+    public static UserEntity from(User user) {
         UserEntity userEntity = new UserEntity();
         userEntity.id = user.getId();
         userEntity.email = user.getEmail();
