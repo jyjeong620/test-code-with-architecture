@@ -32,10 +32,7 @@ public class UserControllerTest {
                 .build());
 
         // when
-        ResponseEntity<UserResponse> result = UserController.builder()
-                .userReadService(testContainer.userReadService)
-                .build()
-                .getUserById(1L);
+        ResponseEntity<UserResponse> result = testContainer.userController.getUserById(1L);
 
         // then
         assertThat(result.getStatusCode()).isEqualTo(HttpStatus.OK);
@@ -53,10 +50,7 @@ public class UserControllerTest {
         TestContainer testContainer = TestContainer.builder().build();
         // when
         // then
-        assertThatThrownBy(() -> UserController.builder()
-                .userReadService(testContainer.userReadService)
-                .build()
-                .getUserById(1L))
+        assertThatThrownBy(() -> testContainer.userController.getUserById(1L))
                 .isInstanceOf(ResourceNotFoundException.class);
     }
 
